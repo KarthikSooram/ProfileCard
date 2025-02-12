@@ -23,7 +23,7 @@ function App() {
 }
 
 function Avatar() {
-  return <img src="images/pfp.jpg" alt="Sooram Karthik" className="avatar" />;
+  return <img src="pfp.jpg" alt="Sooram Karthik" className="avatar" />;
 }
 
 function Data() {
