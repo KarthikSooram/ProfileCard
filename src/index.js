@@ -2,6 +2,54 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+const socialAcs = [
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/sooram-karthik-b4089121a/",
+  },
+  {
+    name: "Leetcode",
+    link: "https://leetcode.com/u/SooramKarthik/",
+  },
+  {
+    name: "GitHub",
+    link: "https://github.com/KarthikSooram",
+  },
+];
+
+const skills = [
+  {
+    skill: "HTML",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "CSS",
+    level: "advanced",
+    color: "#C3DCAF",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D",
+  },
+  {
+    skill: "Node.js",
+    level: "intermediate",
+    color: "#E84F33",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB",
+  },
+  {
+    skill: "Express",
+    level: "beginner",
+    color: "#FF3B00",
+  },
+];
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -23,7 +71,7 @@ function App() {
 }
 
 function Avatar() {
-  return <img src="pfp.jpg" alt="Sooram Karthik" className="avatar" />;
+  return <img src="images/pfp.jpg" alt="Sooram Karthik" className="avatar" />;
 }
 
 function Data() {
@@ -31,8 +79,8 @@ function Data() {
     <div>
       <p className="data">
         {" "}
-        Full stack web developer and an upcoming intern at JP Morgan Chase & Co.
-        I like watching movies and cooking.{" "}
+        I'm a Full stack web developer and an upcoming intern at JP Morgan Chase
+        & Co. I like watching movies, playing video games and cooking.{" "}
       </p>
     </div>
   );
@@ -50,13 +98,9 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="HTML" style={{ backgroundColor: "red" }} />
-      <Skill skill="CSS" style={{ backgroundColor: "blue" }} />
-      <Skill skill="JavaScript" style={{ backgroundColor: "yellow" }} />
-      <Skill skill="React" style={{ backgroundColor: "purple" }} />
-      <Skill skill="Node.js" style={{ backgroundColor: "green" }} />
-      <Skill skill="Express" style={{ backgroundColor: "orange" }} />
-      <Skill skill="MongoDB" style={{ backgroundColor: "grey" }} />
+      {skills.map((skill) => (
+        <Skill skill={skill.skill} color={skill.color} level={skill.level} />
+      ))}
     </div>
   );
 }
@@ -73,10 +117,11 @@ const skillEmojis = {
 
 function Skill(props) {
   return (
-    <div className="skill" style={props.style}>
+    <div className="skill" style={{ backgroundColor: props.color }}>
       <h3>
         {skillEmojis[props.skill]} {props.skill}
       </h3>
+      <p>{props.level}</p>
     </div>
   );
 }
@@ -84,12 +129,9 @@ function Skill(props) {
 function SocialsList() {
   return (
     <div className="socials-list">
-      <Socials
-        name="LinkedIn"
-        link="https://www.linkedin.com/in/sooram-karthik-b4089121a/"
-      />
-      <Socials name="Leetcode" link="https://leetcode.com/u/SooramKarthik/" />
-      <Socials name="GitHub" link="https://github.com/KarthikSooram" />
+      {socialAcs.map((social) => (
+        <Socials name={social.name} link={social.link} />
+      ))}
     </div>
   );
 }
